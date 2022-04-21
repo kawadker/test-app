@@ -1,0 +1,34 @@
+<div fxLayout="column" fxFlex="100" style="padding: 20px;" fxLayoutAlign="start stretch" fxFlexFill fxShow="true" fxHide="false">
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+        <label>Search User</label>
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>User name</mat-label>
+            <input type="text" matInput [formControl]="username" [min]="3" placeholder="Serach user by user name" required>
+            <mat-icon matSuffix style="cursor: pointer;color: #001b80; font-weight: bolder;" (click)="serachUser(username)">search</mat-icon>
+            <mat-error *ngIf="username.invalid">User name should not be empty</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxFlex="100" *ngIf="IsUserData" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+        <div fxLayout="column" fxLayoutGap="25px" fxFlex="100" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+            <div fxLayout="row" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+                <img [src]="userDetails['avatar_url']" alt="" style="width: 100px;border-radius: 50%;">
+            </div>    
+            <div fxLayout="row"  fxLayoutAlign="center center" fxShow="true" fxHide="false">
+                {{userDetails['name'] ? userDetails['name'] :username.value}}
+            </div>
+        <div fxLayout="row" *ngIf="IsUserData" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+            <div fxLayout="column" fxLayoutGap="25px" fxFlex="100" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                <div fxLayout="row" *ngIf="IsUserData" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <label>Created At :- </label>
+                    <label>{{userDetails['created_at'] | date:'dd-MM-yyyy'}}</label>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutGap="25px" fxFlex="100" fxLayoutAlign="end stretch" fxShow="true" fxHide="false">
+                <div fxLayout="row" *ngIf="IsUserData" fxLayoutAlign="end stretch" fxShow="true" fxHide="false">
+                    <label>Followers :- </label>
+                    <label>{{userDetails['followers'] }}</label>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>

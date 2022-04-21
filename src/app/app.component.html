@@ -1,0 +1,16 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" fxFlexFill fxShow="true" fxHide="false">   
+    <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center " style="height: 64px;background-color: #898c8f">
+      <div fxLayout="column" fxFlex="40" fxLayoutAlign="center start">
+        <p>GitHub User dashboard</p>
+      </div>
+      <div fxLayout="row" fxFlex="40" fxLayoutAlign="end end"  fxLayoutGap="20px">
+        <div fxLayout="column wrap"  fxLayoutAlign="end center" style="cursor: pointer;" *ngFor="let item of menu">
+          <mat-icon (click)="navigate(item)" >{{item.icon}}</mat-icon>
+          <p (click)="navigate(item)" >{{item.name}}</p>
+        </div>
+      </div>
+    </mat-toolbar>
+  <div fxLayout="column wrap" class="main-container" fxFlex="calc(100% - 64px)" style="overflow-y: auto;" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" fxFlex="calc(100% - 128px)">
+    <router-outlet></router-outlet>
+  </div>
+</div>
